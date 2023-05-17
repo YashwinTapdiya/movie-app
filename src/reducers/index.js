@@ -1,13 +1,8 @@
-// movies.js (reducers)
-const initialState = [];
+import { ADD_MOVIES } from "../actions";
 
-const movies = (state = initialState, action) => {
-  switch (action.type) {
-    case 'ADD_MOVIES':
-      return [...state, ...action.movies];
-    default:
-      return state;
+export default function movies ( state = [], action){
+  if(action.type === ADD_MOVIES){
+    return action.movies;
   }
-};
-
-export default movies;
+  return state;
+}
