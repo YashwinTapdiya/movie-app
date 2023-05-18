@@ -12,6 +12,7 @@ export const ADD_FAVOURITE = 'ADD_FAVOURITE';
 export const REMOVE_FROM_FAVOURITES = 'REMOVE_FROM_FAVOURITES';
 export const SET_SHOW_FAVOURITE = 'SET_SHOW_FAVOURITE';
 export const ADD_MOVIE_TO_LIST = 'ADD_MOVIE_TO_LIST';
+export const ADD_SEARC_RESULT = 'ADD_SEARC_RESULT';
 
 //this functions are called action creator
 export function addMovies (movies){
@@ -54,6 +55,14 @@ export function addMovieToList(movie) {
             console.log(movie);
 
             //dipatch an action
+            dispatch(addMovieSearchResult(movie));
         })
     }
  } 
+
+ export function addMovieSearchResult(movie) {
+    return {
+        type: 'ADD_SEARC_RESULT',
+        movie
+    };
+ }
