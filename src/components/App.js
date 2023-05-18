@@ -32,13 +32,13 @@ class App extends React.Component {
   }
 
   render(){
-    const {movies} =this.props.store.getState();//{movies: {} , search: {}}
+    const {movies , search} =this.props.store.getState();//{movies: {} , search: {}}
      const {list , favourites , showFavourites } = movies;
     console.log('RENDER', this.props.store.getState());
     const displayMovies = showFavourites ? favourites : list;
   return (
     <div className="App">
-      <Navbar />
+      <Navbar search={search} dispatch={this.props.store.dispatch} />
       <div className="main">
         <div className="tabs">
           <div className={`tab ${showFavourites ? '' : 'active-tabs'}`} onClick={() =>this.onChangeTab(false)}>Movies</div>
@@ -50,7 +50,7 @@ class App extends React.Component {
             key={`movies-${index}`}
             dispatch = {this.props.store.dispatch} 
             isMovieFavourite={this.isMovieFavourite(movie)}
-             />
+            />
           ))}
         </div>
         {displayMovies.length === 0 ? <div className="no-movies">No Movies to display</div> : null}
