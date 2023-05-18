@@ -44,3 +44,16 @@ export function addMovieToList(movie) {
       movie,
     };
   }
+  //async action
+ export function handleMovieSearch (movie){
+    const url = `http://www.omdbapi.com/?apikey=244c340b&t=${movie}`;
+    return function (dispatch){
+        fetch(url)
+        .then(Response=> Response.json())
+        .then(movie =>{
+            console.log(movie);
+
+            //dipatch an action
+        })
+    }
+ } 
