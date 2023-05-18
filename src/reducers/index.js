@@ -1,4 +1,4 @@
-import { ADD_MOVIES , ADD_FAVOURITE } from "../actions";
+import { ADD_MOVIES , ADD_FAVOURITE , REMOVE_FROM_FAVOURITES } from "../actions";
 
 const initialMoviesState = {
   list: [],
@@ -25,6 +25,14 @@ export default function movies ( state = initialMoviesState , action){
         ...state,
         favourites: [action.movie , ...state.favourites]
       }
+    case REMOVE_FROM_FAVOURITES:
+      const filteredArray = state.favourites.filter(
+        movie => movie.Title !== action.movie.Title
+      );
+      return{
+        ...state,
+        favourites: filteredArray
+      };
     default:
       return state;  
   }
